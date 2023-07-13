@@ -1,5 +1,5 @@
 package todoappspring.Service;
 
-public class TaskImpl{
+public class TaskImpl implements TaskService{
     
 }
