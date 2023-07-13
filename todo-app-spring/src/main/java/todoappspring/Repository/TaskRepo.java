@@ -1,5 +1,8 @@
 package todoappspring.Repository;
 
-public interface TaskRepo {
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.scheduling.config.Task;
+
+public interface TaskRepo extends MongoRepository <Task, String>{
     
 }

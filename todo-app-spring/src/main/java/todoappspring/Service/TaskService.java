@@ -9,7 +9,7 @@ import java.util.Optional;
 @Service
 public interface TaskService {
 
-    ResponseEntity<String> createTask();
+    ResponseEntity<String> createTask(Task newTask);
 
     List<Task> getAllTasks();
 
