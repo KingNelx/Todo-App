@@ -23,6 +23,7 @@ public class Tasks {
     private @Getter @Setter String id;
     private @Getter @Setter String taskName;
     private @Getter @Setter String taskDescription;
+    private @Getter @Setter String difficulty;
     private @Getter @Setter String createdAt;
     private @Getter @Setter String dueDate;
     private @Getter @Setter String priority;
