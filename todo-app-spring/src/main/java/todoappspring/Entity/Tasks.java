@@ -9,23 +9,23 @@ import jakarta.persistence.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
-@Document(collection = "Tasks")
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
+@Document(collection = "Tasks")
 public class Tasks {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue
     private @Getter @Setter String id;
     private @Getter @Setter String taskName;
     private @Getter @Setter String taskDescription;
     private @Getter @Setter String difficulty;
     private @Getter @Setter String createdAt;
     private @Getter @Setter String dueDate;
-    private @Getter @Setter String priority;
     private @Getter @Setter String status;
+    private @Getter @Setter String priority;
 }
