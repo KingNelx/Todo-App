@@ -19,7 +19,7 @@ import jakarta.persistence.GenerationType;
 public class Tasks {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private @Getter @Setter String id;
     private @Getter @Setter String taskName;
     private @Getter @Setter String taskDescription;

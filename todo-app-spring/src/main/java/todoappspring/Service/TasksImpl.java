@@ -20,17 +20,8 @@ public class TasksImpl implements TasksService {
 
     @Override
     public ResponseEntity<String> createTasks(@RequestBody Tasks createTasks) {
-        Optional<Tasks> doesTaskExist = tasksRepo.findById(createTasks.getId());
-        try {
-            if (doesTaskExist.isPresent()) {
-                throw new HttpClientErrorException(HttpStatus.CONFLICT);
-            }
-            tasksRepo.save(createTasks);
-        } catch (Exception e) {
-            System.out.println(" ERROR " + e);
-        }
+        tasksRepo.save(createTasks);
         return ResponseEntity.ok(" NEW TASK ADDED ");
-
     }
 
     @Override
