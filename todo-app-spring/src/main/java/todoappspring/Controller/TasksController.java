@@ -11,6 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api-task")
+@CrossOrigin(origins = "http://localhost:5173/")
 public class TasksController {
 
     @Autowired
