@@ -3,7 +3,6 @@ import Card from "react-bootstrap/Card";
 import logo from "../Images/logo.png";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-import axios from 'axios'
 
 const Start = () => {
   const swalFire = async () => {
