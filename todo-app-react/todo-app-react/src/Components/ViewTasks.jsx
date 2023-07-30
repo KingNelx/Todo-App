@@ -8,9 +8,11 @@ import logo from "../Images/logo.png";
 import Swal from "sweetalert2";
 import Modal from 'react-bootstrap/Modal';
 import AddTasks from "./AddTasks";
-
+import { useParams } from "react-router-dom";
 
 const ViewTasks = () => {
+
+  const {id} = useParams()  
 
   const swalFire = async () => {
     let timerInterval;
@@ -53,6 +55,30 @@ const ViewTasks = () => {
       alert(" ERROR MESSAGE: " + error);
     }
   };
+
+  const removeTasks = () => {
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'TASK DELETED',
+        showConfirmButton: false,
+        timer: 1500
+    })
+  }
+  const deleteTasks = async(id) => {
+    try {
+      const result = await axios.delete(`http://localhost:8080/api-task/delete-task/${id}`)
+      if(result.status === 200){
+        removeTasks()
+        loadAllTasks()
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      }
+    } catch (error) {
+      alert(" ERROR MESSAGE: " + error)
+    }
+  }
 
   useEffect(() => {
     loadAllTasks();
@@ -126,13 +152,18 @@ const ViewTasks = () => {
                     <td>
                       <Button variant="outline-primary">
                         <span class="material-icons">visibility</span>
-                      </Button>{" "}
-                      <Button variant="outline-success">
+                      </Button>
+                    <Link to={`/update-tasks/${value.id}`}>
+                      <Button variant="outline-success mx-2" onClick={swalFire}>
                         <span class="material-icons">update</span>
-                      </Button>{" "}
-                      <Button variant="outline-danger">
+                      </Button>
+                    </Link>
+                      <Button variant="outline-danger" onClick={() => {
+                        deleteTasks(value.id);
+                        loadAllTasks()
+                      }}>
                         <span class="material-icons">delete</span>
-                      </Button>{" "}
+                      </Button>
                     </td>
                   </tr>
                 ))}
